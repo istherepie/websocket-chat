@@ -1,9 +1,10 @@
 {
   "name": "websocket-chat",
   "version": "1.0.0",
-  "description": "A simple NodeJS messaging app using websockets (Proof of concept)",
-  "main": "index.js",
+  "description": "A simple NodeJS messaging app using websockets",
+  "main": "server.js",
   "scripts": {
+    "start": "NODE_ENV=development NODE_PATH=. SERVER_PORT=4000 nodemon server.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [
@@ -13,5 +14,12 @@
     "websocket"
   ],
   "author": "Steffen Park <dev@istherepie.com>",
-  "license": "MIT"
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.15.3",
+    "ws": "^3.0.0"
+  },
+  "devDependencies": {
+    "nodemon": "^1.11.0"
+  }
 }
