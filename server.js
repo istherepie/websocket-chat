@@ -4,6 +4,7 @@
 const http = require('http')
 const express = require('express')
 const WebSocket = require('ws')
+const nunjucks = require('nunjucks')
 
 // Constants
 const app = express()
@@ -32,8 +33,20 @@ wss.on('connection', (socket, request) => {
   })
 })
 
+// Template engine
+nunjucks.configure('views', {
+    autoescape: true,
+    express: app
+})
+
+
 // Serve static content
 app.use('/', express.static('public'))
+
+// Routes
+app.get('/', (req, res) => {
+  res.render('index.html')
+})
 
 // Start server
 server.listen(port, function() {
