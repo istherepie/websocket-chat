@@ -9,10 +9,17 @@
 <body>
 	<h3>Websocket Chat Example</h3>
 	<hr>
-	<div id="messages">
-	</div>
-  <input id="input" type="text" name="message">
-  <button id="submit">Send</button>
+	<div id="root">
+    <h4 v-show="notSupported">Your browser does not support websockets</h4>
+      <div v-for="item in messages">
+        {{ item }}
+      </div>
+    <hr>
+    <div>
+      <input v-model="input">
+      <button @click="sendMessage">SUBMIT</button> 
+    </div>
+  </div>
 </body>
 <script src="/js/app.js"></script>
 </html>
