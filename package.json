@@ -19,7 +19,6 @@
   "license": "MIT",
   "dependencies": {
     "express": "^4.15.3",
-    "nunjucks": "^3.0.1",
     "vue": "^2.3.4",
     "ws": "^3.0.0"
   },
@@ -39,5 +38,6 @@
     "vue-loader": "^11.1.4",
     "vue-template-compiler": "^2.2.1",
     "webpack": "^2.2.0"
-  }
+  },
+  "false": {}
 }
