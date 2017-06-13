@@ -3,7 +3,7 @@ import Vue from 'vue'
 new Vue({
   el: '#root',
   data: {
-    notSupported: false,
+    title: 'Websocket Chat Example',
     username: null,
     input: null,
     messages: [],
@@ -19,33 +19,34 @@ new Vue({
     }
   },
   mounted() {
+    // Check if Websocket object is available
+    if (!window.WebSocket) {
+      this.title = 'This browser does not support websockets'
+    }
+
     // Set protocol
     let protocol = 'wss://'
     
     if (location.protocol != 'https:') {
         protocol = 'ws://'
       }
-
-    if (!window.WebSocket) {
-      this.notSupported = true
-    }
   
     // Create WebSocket connection.
     const socket = new WebSocket(protocol + location.host)
 
-      // Connection opened
-      socket.addEventListener('open', event => {
-        console.log('Websocket connection open')
-        this.socket = socket
-      })
+    // Connection opened
+    socket.addEventListener('open', event => {
+      console.log('Websocket connection open')
+      this.socket = socket
+    })
 
-      // Listen for messages
-      socket.addEventListener('message', event => {
-        if (this.messages.length >= 10) {
-          this.removeMessage()
-        }
-        console.log('NEW MESSAGE: ' + event)
-        this.messages.push(event.data)
-      })
-    }
+    // Listen for messages
+    socket.addEventListener('message', event => {
+      if (this.messages.length >= 20) {
+        this.removeMessage()
+      }
+      console.log(event)
+      this.messages.push(event)
+    })
+  }
 })
