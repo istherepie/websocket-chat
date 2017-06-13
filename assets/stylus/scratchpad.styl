@@ -1,4 +1,39 @@
 /**
  * Scratchpad for prototyping styles
  */
+ 
+.container
+	display: flex
+	flex-direction: column
+	width: 1024px
 
+.chatbox
+	display: flex
+	flex-direction: column
+	justify-content: flex-end
+	border: 5px solid black
+	padding: 20px
+	margin-bottom: 20px
+	height: 500px
+	overflow: auto
+	
+
+.message
+	margin: 5px
+	
+.input
+	margin-top: 30px
+	padding: 5px
+
+input
+	padding: 10px
+	font-size: 18px
+	width: 100%
+	border: 0
+	border-bottom: 1px solid black
+	&:focus
+		outline: none
+	&::placeholder
+		color: rgba(0, 0, 0, .2)
+	
+	
